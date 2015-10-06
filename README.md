@@ -1,4 +1,7 @@
 ## Lemonade
+
+Nothing to see yet don't look here.
+
 Python script with the intent of being an easy to use and configurable [lemonbar](https://github.com/LemonBoy/bar), targeting bspwm.
 
 ~wip~
