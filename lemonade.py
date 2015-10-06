@@ -3,12 +3,18 @@
 import subprocess
 import re
 from monitor import monitor
+from panel import panel
 
 def main():
     mMonitors = parse_monitors()
     print("Monitors:")
     for lMonitor in mMonitors:
         print(lMonitor)
+    # Make a panel with on first monitor
+    p = panel('auto', 32, 0, 0, 10, 10)
+    p.SetMonitor(mMonitors[0])
+    p.Run()
+
 
 # return a list of monitors with dimensions
 def parse_monitors():
@@ -18,9 +24,8 @@ def parse_monitors():
             # get dimensions from line  to use - eg name 1440x900+0+0
             # note: monitor names can have spaces.
             info = re.search('(.+) (\d+)x(\d+)\+(\d+)\+(\d+)', line )
-            lInfo = info.groups()
-            m = monitor(*lInfo)
-            toReturn.append(m)
+            toReturn.append(monitor(*info.groups()))
+
     return toReturn
 
 if __name__ == "__main__":

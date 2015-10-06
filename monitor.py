@@ -10,3 +10,8 @@ class monitor:
         self.xoffset = xoffset
         self.yoffset = yoffset
 
+    def __str__(self):
+        return "Monitor: " + self.name + "\n" + \
+                "Dimensions: " + self.width + "x" + self.height + \
+                "+" + self.xoffset + "+" + self.yoffset
+

@@ -1,5 +1,5 @@
-
-
+from widgets import clock
+import subprocess
 
 class panel:
     def SetMonitor(self, aMonitor):
@@ -13,10 +13,18 @@ class panel:
         self.hpadding = hpadding
         self.vpadding = vpadding
 
+    def AddWidget(self, aWidget, aAlign):
+        pass
 
-    def AddWidgetLeft(self, aWidget):
-
-    def AddWidgetRight(self, aWidget):
-
-    def AddWidgetCenter(self, aWidget):
+    # Consider Flags
+    def Run(self):
+        lBarHeight = self.height
+        if self.width == 'auto':
+            lBarWidth = int(self.mMonitor.width) - (int(self.hpadding) * 2)
+        else:
+            lBarWidth = self.width
+        lBarX = int(self.mMonitor.xoffset) + int(self.hpadding) + int(self.xoffset)
+        lBarY = int(self.mMonitor.yoffset) + int(self.vpadding) + int(self.yoffset)
+        lBarGeom = str(lBarWidth) + "x" + str(lBarHeight) + "+" + str(lBarX) + "+" + str(lBarY)
+        subprocess.call("lemonbar"," -g " + lBarGeom," -p")
 
