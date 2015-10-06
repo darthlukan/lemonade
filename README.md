@@ -3,11 +3,13 @@ Python script with the intent of being an easy to use and configurable [lemonbar
 
 ~wip~
 
-- Considering psutils for system info(ram, HDD)kjA
+- Considering psutils for system info(ram, HDD)
 - Probably just going to parse mpc calls for mpd.
 - Needs to be able to grab config from shell variables/some other flexible medium(maybe just launch flags)
 - data structure(s) for Monitor, workspace, windows
 - will assume xrandr setup for calculating dimensions.
+
+consideration for the far future: run as server in background so can kill and bring up with no problems adjusting dimensions a little bit at a time.
 
 Considering a yaml style config file. mockup(dual monitors):
 
@@ -17,8 +19,9 @@ location:
 	dock: top
 
 dimensions:
-	width: 1080
-	height: 1080
+	monitor: all
+	width: 1080	# or auto
+	height: 32
 	padding_horizontal: 20
 	padding_vertical: 10
 	x_offset: -10
@@ -62,6 +65,8 @@ workspace_display:
 	show_free: true
 	together: true
 	mode_toggle: false
+
+
 ```
 
 ### Misc
