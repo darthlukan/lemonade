@@ -12,6 +12,5 @@ class monitor:
 
     def __str__(self):
         return "Monitor: " + self.name + "\n" + \
-                "Dimensions: " + self.width + "x" + self.height + \
-                "+" + self.xoffset + "+" + self.yoffset
+                "dim: {}x{}+{}+{}".format(self.width,self.height,self.xoffset,self.yoffset)
 

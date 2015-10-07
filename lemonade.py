@@ -11,7 +11,8 @@ def main():
     for lMonitor in mMonitors:
         print(lMonitor)
     # Make a panel with on first monitor
-    p = panel('auto', 32, 0, 0, 10, 10)
+    #p = panel('auto', 32, 0, 0, 10, 10)
+    p = panel({'width': 'auto', 'xoffset': 0, 'yoffset': 0, 'height': 32, 'hpadding': 10, 'vpadding': 10 })
     p.SetMonitor(mMonitors[0])
     p.Run()
 
@@ -25,6 +26,10 @@ def parse_monitors():
             # note: monitor names can have spaces.
             info = re.search('(.+) (\d+)x(\d+)\+(\d+)\+(\d+)', line )
             toReturn.append(monitor(*info.groups()))
+
+    # Sort them left to right.
+    toReturn.sort(key=lambda mon: mon.xoffset)
+    # lemonbars -g flag yoffset appears to be in relation to current monitor, not xrootwin.
 
     return toReturn
 
